@@ -54,4 +54,15 @@ class leetcode {
         if(l2!=null) root.next=l2;
         return head.next;
     }
+    //26. Remove Duplicates from Sorted Array
+    public int removeDuplicates(int[] nums) {
+        int i =0;
+        for(int j=0; j<nums.length; j++){
+            nums[i++]=nums[j];
+            while(j!=nums.length-1&&nums[j]==nums[j+1]){
+                j++;
+            }
+        }
+        return i;
+    }
 }
