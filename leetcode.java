@@ -65,4 +65,29 @@ class leetcode {
         }
         return i;
     }
+    //27. Remove Element
+    public int removeElement(int[] nums, int val) {
+        if(nums.length==0) return 0;
+        if(nums.length==1){
+            if(nums[0]==val) return 0;
+            else return 1;
+        }
+        int last = nums.length -1;
+        int i=0;
+        for(; i<nums.length; i++){
+            if(nums[i]==val){
+                while(last>-1&&nums[last]==val){
+                    last--;
+                }
+                
+                if(last>i){
+                    nums[i]=nums[last];
+                    nums[last]=val;
+                }
+                else break;
+            }
+        }
+        
+        return i;
+    }
 }
