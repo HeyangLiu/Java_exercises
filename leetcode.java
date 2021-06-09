@@ -2,6 +2,32 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //697. Degree of an Array
+    public int findShortestSubArray(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap(),
+        left = new HashMap(), right=new HashMap();
+        int most=0;
+        for(int i=0; i<nums.length; i++){
+            if(left.get(nums[i])==null) left.put(nums[i], i);
+            right.put(nums[i], i);
+            if(map.get(nums[i])==null){
+                map.put(nums[i], 1);
+            }
+            else{
+                map.put(nums[i], map.get(nums[i])+1);
+                //map.get(nums[i])=map.get(nums[i])+1;
+            }
+            if(map.get(nums[i])>most){
+                most = map.get(nums[i]);
+            }
+        }
+        int min = nums.length;
+        for(int x : map.keySet()){
+            if(map.get(x)==most)
+                min = Math.min(min, right.get(x)-left.get(x)+1);
+        }
+        return min;
+    }
     //53. Maximum Subarray
     public int maxSubArray(int[] nums) {
         int n=nums.length;
