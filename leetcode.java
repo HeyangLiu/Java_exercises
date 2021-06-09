@@ -102,4 +102,25 @@ class leetcode {
         }
         return -1;
     }
+    //35. Search Insert Position
+    public int searchInsert(int[] nums, int target) {
+        int l=0;
+        int r=nums.length-1;
+        int mid = (l+r)/2;
+        while(r>=l){
+            if(target>nums[mid]){
+                l=mid+1;
+                mid=(l+r)/2;
+            }
+            else if(target<nums[mid]){
+                r=mid-1;
+                mid=(l+r)/2;
+            }
+            else{
+                return mid;
+            }
+        }
+        if(nums[mid]<target) return mid+1;
+        return mid;
+    }
 }
