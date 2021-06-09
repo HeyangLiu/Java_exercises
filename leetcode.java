@@ -2,6 +2,23 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //53. Maximum Subarray
+    public int maxSubArray(int[] nums) {
+        int n=nums.length;
+        int sums[] = new int[n];
+        sums[0]=nums[0];
+        int max = sums[0];
+        for(int i=1; i<n; i++){
+            if(nums[i]>nums[i]+sums[i-1]){
+                sums[i]=nums[i];
+            }
+            else{
+                sums[i]=nums[i]+sums[i-1];
+            }
+            max =Math.max(max, sums[i]);
+        }
+        return max;
+    }
     //20. Valid Parentheses
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
