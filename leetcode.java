@@ -2,6 +2,34 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //66. Plus One
+    public int[] plusOne(int[] digits) {
+        int carry = 0, cur=digits.length-1;
+        digits[cur]++;
+        if(digits[cur]==10){
+            digits[cur]=0;
+            carry=1;
+        }
+        cur--;
+        while(carry==1&&cur>-1){
+            digits[cur]++;
+            if(digits[cur]==10){
+                digits[cur]=0;
+                carry=1;
+            }
+            else carry=0;
+            cur--;
+        }
+        if(carry==0) return digits;
+        else{
+            int [] ans=new int[digits.length+1];
+            ans[0]=1;
+            for(int i=1; i<digits.length+1; i++){
+                ans[i]=digits[i-1];
+            }
+            return ans;
+        }
+    }
     // 58. Length of Last Word
     public int lengthOfLastWord(String s) {
         int r =-1;
