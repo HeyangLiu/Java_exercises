@@ -2,6 +2,32 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    // 58. Length of Last Word
+    public int lengthOfLastWord(String s) {
+        int r =-1;
+        int l =-1;
+        int i=s.length()-1;
+        boolean foundR = false, foundL=false;
+        for(;i>-1;i--){
+            if(s.charAt(i)!=' '){
+                if(foundR==false){
+                    r=i;
+                    foundR=true;
+                } 
+            }
+            else{
+                if(foundR==true){
+                    l=i;
+                    break;
+                }
+            }
+        }
+        if(r==-1) return 0; //r not found
+        if(l==-1){//l not found
+            return r+1;
+        }
+        return r-l;//both found
+    }
     //697. Degree of an Array
     public int findShortestSubArray(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap(),
