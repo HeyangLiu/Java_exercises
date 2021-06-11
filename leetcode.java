@@ -2,6 +2,94 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //67. Add Binary
+    public String addBinary(String a, String b) {
+        String x = "";
+        //String last="";
+        int r = 0;//remianing length
+        int l=a.length();//the shorter one
+        int remain = 0;//0 if a is shorter, 1 b is shorter, 2 same
+        if(b.length()<l){
+            l=b.length();
+            remain = 1;
+        }
+        else if(b.length()==l){
+            remain =2;
+        }
+        int car = 0;
+        char j = ' ';
+        for(int i=a.length()-1, k=b.length()-1; i>-1&&k>-1; i--, k--){
+            j = (char)(a.charAt(i)+b.charAt(k)-'0'+car);
+            if(j=='2'){
+                car=1;
+                x='0'+x;
+            }
+            else if(j=='3'){
+                car=1;
+                x='1'+x;
+            }
+            else{
+                car=0;
+                x=j+x;
+            }
+        }
+        if(remain==2){//same length
+            if(car==1)//with carry
+                x='1'+x;
+        }
+        else if(remain==1){//b shorter
+            r=a.length()-l;
+            if(car==0){
+                x=a.substring(0, r)+x;
+            }
+            else{
+                for(int i=r-1; i>-1; i--){
+                    j=(char)(a.charAt(i)+car);
+                    if(j=='2'){
+                        car=1;
+                        x='0'+x;
+                    }
+                    else if(j=='3'){
+                        car=1;
+                        x='1'+x;
+                    }
+                    else{
+                        car=0;
+                        x=j+x;
+                    }
+                }
+                if(car==1)//with carry
+                    x='1'+x;
+            }
+            
+        }
+        else{//a is shorter
+            r=b.length()-l;
+            if(car==0){
+                x=b.substring(0, r)+x;
+            }
+            else{
+                for(int i=r-1; i>-1; i--){
+                    j=(char)(b.charAt(i)+car);
+                    if(j=='2'){
+                        car=1;
+                        x='0'+x;
+                    }
+                    else if(j=='3'){
+                        car=1;
+                        x='1'+x;
+                    }
+                    else{
+                        car=0;
+                        x=j+x;
+                    }
+                }
+                if(car==1)//with carry
+                    x='1'+x;
+            }
+        }
+        return x;
+    }
     //66. Plus One
     public int[] plusOne(int[] digits) {
         int carry = 0, cur=digits.length-1;
