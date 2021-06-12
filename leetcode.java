@@ -2,6 +2,18 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //83. Remove Duplicates from Sorted List
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode cur = head;
+        while(cur!=null&&cur.next!=null){
+            if(cur.val==cur.next.val){
+                cur.next=cur.next.next;
+            }
+            else
+                cur=cur.next;
+        }
+        return head;
+    }
     //70. Climbing Stairs
     public int climbStairs(int n) {
         if(n<3) return n;
