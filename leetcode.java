@@ -2,6 +2,31 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //118. Pascal's Triangle
+    public List<List<Integer>> generate(int n) {
+        List<List<Integer>> res = new ArrayList<List<Integer>> ();
+        List<Integer> one = new ArrayList<Integer> ();
+        one.add(1);
+        res.add(one);
+        if(n==1) return res;
+        List<Integer> two = new ArrayList<Integer> ();
+        two.add(1);
+        two.add(1);
+        res.add(two);
+        if(n==2) return res;
+        int x=0;
+        for(int i=2; i<n; i++){
+            List<Integer> t = new ArrayList<Integer> ();
+            t.add(1);
+            for(int j=1; j<i; j++){
+                x=res.get(i-1).get(j-1)+res.get(i-1).get(j);
+                t.add(x);
+            }
+            t.add(1);
+            res.add(t);
+        }
+        return res;
+    }
     //88. Merge Sorted Array
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         int [] mer = new int[m+n];
