@@ -2,6 +2,20 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //121. Best Time to Buy and Sell Stock
+    public int maxProfit(int[] prices) {
+        int low = Integer.MAX_VALUE;
+        int max=0;
+        for(int i=0; i<prices.length; i++){
+            if(prices[i]<low){
+                low=prices[i];
+            }
+            else if(max<prices[i]-low){
+                max=prices[i]-low;
+            }
+        }
+        return max;
+    }
     //118. Pascal's Triangle
     public List<List<Integer>> generate(int n) {
         List<List<Integer>> res = new ArrayList<List<Integer>> ();
