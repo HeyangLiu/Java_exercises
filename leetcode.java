@@ -2,6 +2,16 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //136. Single Number
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i=0; i<nums.length-2; i+=2){
+            if(nums[i]!=nums[i+1]){
+                return nums[i];
+            }
+        }
+        return nums[nums.length-1];
+    }
     //125. Valid Palindrome
     public boolean isPalindrome(String s) {
         s = s.replaceAll("[^a-zA-Z0-9]", "");
