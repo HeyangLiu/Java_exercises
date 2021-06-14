@@ -2,6 +2,18 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //122. Best Time to Buy and Sell Stock II
+    public int maxProfit(int[] prices) {
+        int low=prices[0];
+        int ans=0;
+        for(int i=1; i<prices.length; i++){
+            if(prices[i]>prices[i-1]){
+                ans+=prices[i]-prices[i-1];
+            }
+            
+        }
+        return ans;
+    }
     //121. Best Time to Buy and Sell Stock
     public int maxProfit(int[] prices) {
         int low = Integer.MAX_VALUE;
