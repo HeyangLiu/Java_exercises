@@ -2,6 +2,18 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //125. Valid Palindrome
+    public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        s = s.toLowerCase();
+        //System.out.println(s);
+        for(int i=0; i<s.length()/2; i++){
+            if(s.charAt(i)!=s.charAt(s.length()-1-i)){
+                return false;
+            }
+        }
+        return true;
+    }
     //122. Best Time to Buy and Sell Stock II
     public int maxProfit(int[] prices) {
         int low=prices[0];
