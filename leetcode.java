@@ -2,6 +2,22 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //167. Two Sum II - Input array is sorted
+    public int[] twoSum(int[] n, int tar) {
+        int l=0, r=n.length-1;
+        while(r>l){
+            if(n[l]+n[r]==tar){
+                return new int [] {l+1, r+1};
+            }
+            else if(n[l]+n[r]<tar){
+                l++;
+            }
+            else{
+                r--;
+            }
+        }
+        return new int [] {};
+    }
     //136. Single Number
     public int singleNumber(int[] nums) {
         Arrays.sort(nums);
