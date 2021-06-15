@@ -2,6 +2,20 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //172. Factorial Trailing Zeroes
+    public int trailingZeroes(int n) {
+        if(n==0) return 0;
+        int ans =0, j=0;
+        for(int i=5; i<n+1; i+=5){
+            ans++;
+            j=i;
+            while(j/5%5==0){
+                ans++;
+                j=j/5;
+            }
+        }
+        return ans;
+    }
     //169. Majority Element
     public int majorityElement(int[] nums) {
         int count=0;
