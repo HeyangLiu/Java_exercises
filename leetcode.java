@@ -2,6 +2,17 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //171. Excel Sheet Column Number
+    public int titleToNumber(String c) {
+        int power =1;
+        int cur, ans=0;
+        for(int i=c.length()-1; i>-1; i--){
+            cur = (int)(c.charAt(i)-'@');
+            ans+=cur*power;
+            power*=26;
+        }
+        return ans;
+    }
     //168. Excel Sheet Column Title
     public String convertToTitle(int c) {
         String ans = "";
