@@ -2,6 +2,18 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //169. Majority Element
+    public int majorityElement(int[] nums) {
+        int count=0;
+        Integer candidate = null;
+        for(int n : nums){
+            if(count==0){
+                candidate = n;
+            }
+            count+=(n==candidate)? 1: -1;
+        }
+        return candidate;
+    }
     //171. Excel Sheet Column Number
     public int titleToNumber(String c) {
         int power =1;
