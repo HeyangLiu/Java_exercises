@@ -2,6 +2,25 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //168. Excel Sheet Column Title
+    public String convertToTitle(int c) {
+        String ans = "";
+        int cur;
+        do{
+            cur=c%26;
+            if(cur==0){
+                ans="Z"+ans;
+                c=c-26;
+            }
+            else{
+                ans=(char)('A'+c%26-1)+ans;
+                c=c-c%26;
+            }
+            
+            c=c/26;
+        }while(c>0);
+        return ans;
+    }
     //167. Two Sum II - Input array is sorted
     public int[] twoSum(int[] n, int tar) {
         int l=0, r=n.length-1;
