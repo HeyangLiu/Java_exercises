@@ -2,6 +2,32 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //202. Happy Number
+    public boolean isHappy(int n) {
+        Set<Integer> nums = new HashSet<Integer>();
+        int num = 0;
+        while(true){
+            num=0;
+            while(n>0){
+                num+=(n%10)*(n%10);
+                n=n/10;
+            }
+            //System.out.println(num);
+            if(num==1){
+                return true;
+            }
+            else{
+                if(nums.contains(num)){
+                    return false;
+                }
+                else{
+                    nums.add(num);
+                }
+            }
+            n=num;
+        }
+        //return false;
+    }
     //172. Factorial Trailing Zeroes
     public int trailingZeroes(int n) {
         if(n==0) return 0;
