@@ -2,6 +2,23 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //203. Remove Linked List Elements
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode cur = head;
+        
+        while(head!=null&&head.val==val){
+            head=head.next;
+        }
+        if(head==null) return head;
+        while(cur!=null&&cur.next!=null){
+            if(cur.next.val==val){
+                cur.next=cur.next.next;
+            }
+            else
+                cur=cur.next;
+        }
+        return head;
+    }
     //202. Happy Number
     public boolean isHappy(int n) {
         Set<Integer> nums = new HashSet<Integer>();
