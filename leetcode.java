@@ -2,6 +2,19 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //217. Contains Duplicate
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> a = new HashSet<Integer>();
+        for(int i=0; i<nums.length; i++){
+            if(a.contains(nums[i])==false){
+                a.add(nums[i]);
+            }
+            else{
+                return true;
+            }
+        }
+        return false;
+    }
     //206. Reverse Linked List
     public ListNode reverseList(ListNode head) {
         if(head==null) return head;
