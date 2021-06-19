@@ -4,19 +4,17 @@ class leetcode {
     }
     //219. Contains Duplicate II
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for(int i=0; i<nums.length; i++){
             if(map.containsKey(nums[i])==false){
-                ArrayList<Integer> t = new ArrayList<> ();
-                t.add(i);
-                map.put(nums[i], t);
+                map.put(nums[i], i);
             }
             else{
-                if(i-map.get(nums[i]).get(map.get(nums[i]).size()-1)<=k){
+                if(i-map.get(nums[i])<=k){
                     return true;
                 }
                 else{
-                    map.get(nums[i]).add(i);
+                    map.put(nums[i], i);
                 }
             }
         }
