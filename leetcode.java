@@ -2,6 +2,42 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //205. Isomorphic Strings
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length()!=t.length()){
+            return false;
+        }
+        int [] book = new int[128];
+        for(int i=0; i<128; i++){
+            book[i]=0;
+        }
+        for(int j=0; j<s.length(); j++){
+            int x = s.charAt(j);
+            if(book[x]==0){
+                book[x] = (int)t.charAt(j);
+            }
+            else{
+                if(book[x]!=(int)t.charAt(j)){
+                    return false;
+                }
+            }
+        }
+        for(int i=0; i<128; i++){
+            book[i]=0;
+        }
+        for(int j=0; j<t.length(); j++){
+            int x = t.charAt(j);
+            if(book[x]==0){
+                book[x] = (int)s.charAt(j);
+            }
+            else{
+                if(book[x]!=(int)s.charAt(j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     //204. Count Primes
     public int countPrimes(int n) {
         if(n<3) return 0;
