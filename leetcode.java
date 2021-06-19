@@ -2,6 +2,29 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //204. Count Primes
+    public int countPrimes(int n) {
+        if(n<3) return 0;
+        //if(n<4) return n-1;
+        boolean [] book = new boolean[n];
+        for(int x=2; x<n; x++){
+            book[x]=true;
+        }
+        for(int i=2; i<n; i++){
+            if(book[i]==true){
+                for(int j=2; j*i<n; j++){
+                    book[i*j]=false;
+                }
+            }
+        }
+        int ans = 0;
+        for(int a=2; a<n; a++){
+            if(book[a]==true){
+                ans++;
+            }
+        }
+        return ans;
+    }
     //203. Remove Linked List Elements
     public ListNode removeElements(ListNode head, int val) {
         ListNode cur = head;
