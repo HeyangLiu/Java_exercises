@@ -2,6 +2,22 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //206. Reverse Linked List
+    public ListNode reverseList(ListNode head) {
+        if(head==null) return head;
+        ArrayList<Integer> book = new ArrayList<Integer> ();
+        while(head!=null){
+            book.add(head.val);
+            head=head.next;
+        }
+        ListNode ans = new ListNode();
+        ListNode cur = ans;
+        for(int i=book.size()-1; i>-1; i--){
+            cur.next = new ListNode(book.get(i));
+            cur=cur.next;
+        }
+        return ans.next;
+    }
     //205. Isomorphic Strings
     public boolean isIsomorphic(String s, String t) {
         if(s.length()!=t.length()){
