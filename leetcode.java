@@ -2,6 +2,18 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //231. Power of Two
+    public boolean isPowerOfTwo(int n) {
+        int power=1;
+        for(int i=0; i<31; i++){
+            if(power==n) return true;
+            if(power>n) return false;
+            
+            power=power*2;
+        }
+       
+        return false;
+    }
     //219. Contains Duplicate II
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
