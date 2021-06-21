@@ -2,6 +2,15 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //268. Missing Number
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        int i=0;
+        for(; i<nums.length; i++){
+            if(nums[i]!=i) return i;
+        }
+        return i;
+    }
     //263. Ugly Number
     public boolean isUgly(int n) {
         if(n==0) return false;
