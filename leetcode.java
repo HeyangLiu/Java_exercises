@@ -2,6 +2,14 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //367. Valid Perfect Square
+    public boolean isPerfectSquare(int num) {
+        double i=0;
+        for(; i*i<num; i++){
+            if(i*i==num) break;
+        }
+        return (i*i==num);
+    }
     //278. First Bad Version
     public int firstBadVersion(int n) {
         int l=1, r=n;
