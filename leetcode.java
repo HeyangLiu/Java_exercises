@@ -2,6 +2,27 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //389. Find the Difference
+    public char findTheDifference(String s, String t) {
+        int[] book = new int[26];
+        int i=0;
+        for(; i<26; i++){
+            book[i]=0;
+        }
+        int j=0;
+        for(i=0; i<t.length(); i++){
+            j=(int)(t.charAt(i)-'a');
+            book[j]++;
+        }
+        for(i=0; i<s.length(); i++){
+            j=(int)(s.charAt(i)-'a');
+            book[j]--;
+        }
+        for(i=0; i<26; i++){
+            if(book[i]>0) return (char)(i+'a');
+        }
+        return (char)('a'-1);
+    }
     //387. First Unique Character in a String
     public int firstUniqChar(String s) {
         int[] book = new int[26];
