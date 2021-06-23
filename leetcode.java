@@ -2,6 +2,24 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //387. First Unique Character in a String
+    public int firstUniqChar(String s) {
+        int[] book = new int[26];
+        int i=0;
+        for(;i<26; i++){
+            book[i]=0;
+        }
+        int j=0;
+        for(i=0; i<s.length(); i++){
+            j=(int)(s.charAt(i)-'a');
+            book[j]++;
+        }
+        for(i=0; i<s.length(); i++){
+            j=(int)(s.charAt(i)-'a');
+            if(book[j]==1) return i;
+        }
+        return -1;
+    }
     //383. Ransom Note
     public boolean canConstruct(String ran, String mag) {
         int[] book = new int[26];
