@@ -2,6 +2,17 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //392. Is Subsequence
+    public boolean isSubsequence(String s, String t) {
+        if(s.length()>t.length()) return false;
+        if(s.length()==0) return true;
+        int j=0;
+        for(int i=0; i<t.length()&&j<s.length(); i++){
+            if(s.charAt(j)==t.charAt(i))
+                j++;
+        }
+        return j==s.length();
+    }
     //389. Find the Difference
     public char findTheDifference(String s, String t) {
         int[] book = new int[26];
