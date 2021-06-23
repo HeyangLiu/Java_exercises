@@ -2,6 +2,26 @@ class leetcode {
     public static void main(String[] args) {
         System.out.print("hello");
     }
+    //383. Ransom Note
+    public boolean canConstruct(String ran, String mag) {
+        int[] book = new int[26];
+        int i=0, j=0;
+        for(; i<26; i++){
+            book[i]=0;
+        }
+        for(i=0; i<mag.length(); i++){
+            j=(int)(mag.charAt(i)-'a');
+            book[j]++;
+        }
+        for(i=0; i<ran.length(); i++){
+            j=(int)(ran.charAt(i)-'a');
+            book[j]--;
+        }
+        for(i=0; i<26; i++){
+            if(book[i]<0) return false;
+        }
+        return true;
+    }
     //367. Valid Perfect Square
     public boolean isPerfectSquare(int num) {
         double i=0;
