@@ -1,4 +1,17 @@
 class dfs{
+    //104. Maximum Depth of Binary Tree
+    int max=0;
+    public int maxDepth(TreeNode root) {
+        if(root==null) return 0;
+        helper(root, 0);
+        return max+1;
+    }
+    public void helper(TreeNode n, int d){
+        if(n==null) return;
+        helper(n.left, d+1);
+        if(d>max) max=d;
+        helper(n.right, d+1);
+    }
     //101. Symmetric Tree
     public boolean isSymmetric(TreeNode root) {
         List<Integer> book = new ArrayList<Integer>();
