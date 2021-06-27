@@ -1,4 +1,27 @@
 class dfs{
+    //113. Path Sum II
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if(root==null) return ans;
+        
+        helper(root, new ArrayList<>(), targetSum, ans);
+        return ans;
+    }
+    
+    public void helper(TreeNode n, List<Integer> sum, int s, List<List<Integer>> ans){
+        if(n==null) return;
+        sum.add(n.val);
+        if(n.left==null&&n.right==null){
+            if(n.val==s){
+                ans.add(new ArrayList<>(sum));
+                sum.remove(sum.size()-1);
+                return;
+            }
+        }
+        helper(n.left, sum, s-n.val, ans);
+        helper(n.right, sum, s-n.val, ans);
+        sum.remove(sum.size()-1);
+    }
     //112. Path Sum
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if(root==null) return false;
