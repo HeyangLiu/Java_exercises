@@ -1,4 +1,13 @@
 class dfs{
+    //110. Balanced Binary Tree
+    public boolean isBalanced(TreeNode root){
+        if(root ==  null) return true;
+        return Math.abs(height(root.left) - height(root.right))<= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+    public  int height(TreeNode n){
+        if(n == null ) return 0;
+        return Math.max(height(n.left) , height(n.right)) + 1;
+    }
     //104. Maximum Depth of Binary Tree
     int max=0;
     public int maxDepth(TreeNode root) {
