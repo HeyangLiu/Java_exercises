@@ -1,4 +1,22 @@
 class dfs{
+    //112. Path Sum
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if(root==null) return false;
+        List<Integer> sum = new ArrayList<Integer> ();
+        helper(root, sum, root.val);
+        for(int i=0; i<sum.size(); i++){
+            if(sum.get(i)==targetSum) return true;
+        }
+        return false;
+    }
+    public void helper(TreeNode n, List<Integer> sum, int s){
+        if(n==null) return;
+        if(n.left!=null)
+        helper(n.left, sum, s+n.left.val);
+        if(n.left==null&&n.right==null) sum.add(s);
+        if(n.right!=null)
+        helper(n.right, sum, s+n.right.val);
+    }
     //110. Balanced Binary Tree
     public boolean isBalanced(TreeNode root){
         if(root ==  null) return true;
