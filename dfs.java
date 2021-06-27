@@ -1,4 +1,18 @@
 class dfs{
+    //111. Minimum Depth of Binary Tree
+    int ans=Integer.MAX_VALUE;
+    public int minDepth(TreeNode root) {
+        if(root==null) return 0;
+        
+        helper(root, 1);
+        return ans;
+    }
+    public void helper(TreeNode n, int d){
+        if(n==null) return;
+        helper(n.left, d+1);
+        if(n.left==null&&n.right==null&&d<ans) ans=d;
+        helper(n.right, d+1);
+    }
     //113. Path Sum II
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         List<List<Integer>> ans = new ArrayList<>();
