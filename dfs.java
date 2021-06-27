@@ -1,4 +1,23 @@
 class dfs{
+    //101. Symmetric Tree
+    public boolean isSymmetric(TreeNode root) {
+        List<Integer> book = new ArrayList<Integer>();
+        List<Integer> direct = new ArrayList<Integer>();
+        helper(root, book, direct, 0);
+        if(book.size()%2==0) return false;
+        for(int i=0; i<book.size()/2; i++){
+            if(book.get(i)!=book.get(book.size()-1-i)) return false;
+            if(direct.get(i)==direct.get(book.size()-1-i)) return false;
+        }
+        return true;
+    }
+    public void helper(TreeNode n, List<Integer> a, List<Integer> b, int dir){
+        if(n==null) return;
+        helper(n.left, a, b, -1);
+        a.add(n.val);
+        b.add(dir);
+        helper(n.right, a, b, 1);
+    }
     //100. Same Tree
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p==null&&q==null) return true;
