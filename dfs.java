@@ -1,4 +1,21 @@
 class dfs{
+    //129. Sum Root to Leaf Numbers
+    int ans =0;
+    public int sumNumbers(TreeNode root) {
+        if(root==null) return 0;
+        helper(root, 0);
+        return ans;
+    }
+    public void helper(TreeNode n, int x){
+        if(n==null) return;
+        x+=n.val;
+        if(n.left==null&&n.right==null){
+            ans+=x;
+            return;
+        }
+        helper(n.left, x*10);
+        helper(n.right, x*10);
+    }
     //144. Binary Tree Preorder Traversal
     List<Integer> ans;
     public List<Integer> preorderTraversal(TreeNode root) {
