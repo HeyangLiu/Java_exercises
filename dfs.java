@@ -1,4 +1,18 @@
 class dfs{
+    //144. Binary Tree Preorder Traversal
+    List<Integer> ans;
+    public List<Integer> preorderTraversal(TreeNode root) {
+        ans = new ArrayList<>();
+        if(root==null) return ans;
+        helper(root);
+        return ans;
+    }
+    public void helper(TreeNode n){
+        if(n==null) return;
+        ans.add(n.val);
+        helper(n.left);
+        helper(n.right);
+    }
     //117. Populating Next Right Pointers in Each Node II
     public Node connect(Node root) {
         if(root==null) return root;
