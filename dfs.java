@@ -1,4 +1,41 @@
 class dfs{
+    //117. Populating Next Right Pointers in Each Node II
+    public Node connect(Node root) {
+        if(root==null) return root;
+        List<List<Node>> ans = new ArrayList<>();
+        List<Node> temp = new ArrayList<>();
+        int i=0;
+        temp.add(root);
+        ans.add(new ArrayList<>(temp));
+        temp.removeAll(temp);
+        while(true){
+            boolean going = false;
+            for(int j=0; j<ans.get(i).size(); j++){
+                if(ans.get(i).get(j).left!=null){
+                    temp.add(ans.get(i).get(j).left);
+                    going = true;
+                }
+                
+                if(ans.get(i).get(j).right!=null){
+                    temp.add(ans.get(i).get(j).right);
+                    going = true;
+                }
+                
+            }
+            if(going==false) break;
+            ans.add(new ArrayList<>(temp));
+            temp.removeAll(temp);
+            i++;
+        }
+        for(i=0; i<ans.size(); i++){
+            int j=0;
+            for(; j<ans.get(i).size()-1; j++){
+                ans.get(i).get(j).next=ans.get(i).get(j+1);
+            }
+            ans.get(i).get(j).next=null;
+        }
+        return root;
+    }
     //116. Populating Next Right Pointers in Each Node
     public Node connect(Node root) {
         if(root==null) return root;
