@@ -1,4 +1,31 @@
 class dfs{
+    //116. Populating Next Right Pointers in Each Node
+    public Node connect(Node root) {
+        if(root==null) return root;
+        List<List<Node>> ans = new ArrayList<>();
+        List<Node> temp = new ArrayList<>();
+        int i=0;
+        temp.add(root);
+        ans.add(new ArrayList<>(temp));
+        temp.removeAll(temp);
+        while(ans.get(i).get(0).left!=null){
+            for(int j=0; j<ans.get(i).size(); j++){
+                temp.add(ans.get(i).get(j).left);
+                temp.add(ans.get(i).get(j).right);
+            }
+            ans.add(new ArrayList<>(temp));
+            temp.removeAll(temp);
+            i++;
+        }
+        for(i=0; i<ans.size(); i++){
+            int j=0;
+            for(; j<ans.get(i).size()-1; j++){
+                ans.get(i).get(j).next=ans.get(i).get(j+1);
+            }
+            ans.get(i).get(j).next=null;
+        }
+        return root;
+    }
     //111. Minimum Depth of Binary Tree
     int ans=Integer.MAX_VALUE;
     public int minDepth(TreeNode root) {
