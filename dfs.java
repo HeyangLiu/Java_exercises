@@ -1,4 +1,33 @@
 class dfs{
+    //130. Surrounded Regions
+    public void solve(char[][] board) {
+        int m=board.length;
+        int n=board[0].length;
+        for(int i=0; i<n; i++){
+            helper(board, 0, i, m, n);
+            helper(board, m-1, i, m, n);
+        }
+        for(int i=0; i<m; i++){
+            helper(board, i, 0, m, n);
+            helper(board, i, n-1, m, n);
+        }
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(board[i][j]=='#')board[i][j]='O';
+                else board[i][j]='X';
+            }
+        }
+    }
+    public void helper(char[][] board, int i, int j, int m, int n){
+        if(i<0||j<0||i==m||j==n||board[i][j]!='O'){
+            return;
+        }
+        if(board[i][j]=='O') board[i][j]='#';
+        helper(board, i, j+1, m, n);
+        helper(board, i, j-1, m, n);
+        helper(board, i+1, j, m, n);
+        helper(board, i-1, j, m, n);
+    }
     //129. Sum Root to Leaf Numbers
     int ans =0;
     public int sumNumbers(TreeNode root) {
