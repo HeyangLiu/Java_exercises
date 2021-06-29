@@ -1,4 +1,16 @@
 class dfs{
+    //145 post order
+    List<Integer> ans = new ArrayList<>();
+    public List<Integer> postorderTraversal(TreeNode root) {
+        postOrder(root);
+        return ans;
+    }
+    public void postOrder(TreeNode n){
+        if(n==null) return;
+        postOrder(n.left);
+        postOrder(n.right);
+        ans.add(n.val);
+    }
     //130. Surrounded Regions
     public void solve(char[][] board) {
         int m=board.length;
